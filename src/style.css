@@ -1,0 +1,84 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  width: 100vw;
+  height: 100vh;
+  background: #0b0b0f; /* JS controls bg + color from here on */
+  color: #f4f1ea;
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+  gap:7px;
+}
+
+.theme-icons .icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid transparent; /* keeps size stable, no jump when active */
+  cursor: pointer;
+  position: relative;
+  transition: border-color 0.2s;
+
+  .icon-bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    height: 60%;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(128, 128, 128, 0.45); /* so light dot is visible on light page */
+  }
+}
+
+.theme-icons .icon.active {
+  border-color: currentColor; /* only the active theme gets the border */
+}
+
+.text-item {
+  position: fixed; /* x/y from gsap now match the cursor exactly */
+  top: 0;
+  left: 0;
+  width: fit-content;
+  white-space: nowrap;
+  padding: 0.4rem 1rem;
+  border-radius: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: currentColor; /* follows the pair's fg colour */
+    margin-right: 4px;
+  }
+}
